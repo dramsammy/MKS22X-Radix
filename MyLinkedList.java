@@ -1,8 +1,8 @@
 public class MyLinkedList{
   private class Node{
-    private int data;
+    private Object data;
     private Node next,prev;
-    public Node(Node ReferenceFrom, int Number, Node ReferenceTo){
+    public Node(Node ReferenceFrom, Object Number, Node ReferenceTo){
       next = ReferenceTo;
       prev = ReferenceFrom;
       data = Number;
@@ -19,12 +19,12 @@ public class MyLinkedList{
     public void setPrev(Node other){
       prev = other;
     }
-    public Integer setData(Integer other){
-      Integer temp = data;
+    public Object setData(Object other){
+      Object temp = data;
       data = other;
       return temp;
     }
-    public Integer getData(){
+    public Object getData(){
       return data;
     }
     public String toString(){
@@ -43,7 +43,7 @@ public class MyLinkedList{
   public int size(){
     return size;
   }
-  public boolean add(int value){
+  public boolean add(Object value){
     if (size == 0){
       Node first = new Node(null, value, null);
       start = first;
@@ -72,23 +72,23 @@ public class MyLinkedList{
     }
     return workspace;
   }
-  public Integer get(int index){
+  public Object get(int index){
     if (index >= size || index < 0){
       throw new IndexOutOfBoundsException("Index is not in range");
     }
     Node work = getNth(index);
     return work.getData();
   }
-  public Integer set(int index, Integer v){
+  public Object set(int index, Integer v){
     if (index >= size || index < 0){
       throw new IndexOutOfBoundsException("Index is not in range");
     }
     Node work = getNth(index);
-    Integer temp = work.getData();
+    Object temp = work.getData();
     work.setData(v);
     return temp;
   }
-  public boolean contains(Integer v){
+  public boolean contains(Object v){
     for (int i = 0; i < size; i++){
       if (getNth(i).getData() == v){
         return true;
@@ -96,7 +96,7 @@ public class MyLinkedList{
     }
     return false;
   }
-  public int indexOf(Integer v){
+  public int indexOf(Object v){
     if (contains(v)){
       for (int i = 0; i < size; i++){
         if (getNth(i).getData() == v){
@@ -106,7 +106,7 @@ public class MyLinkedList{
   }
     return -1;
 }
-  public void add(int i, Integer v){
+  public void add(int i, Object v){
     if (i >= size || i < 0){
       throw new IndexOutOfBoundsException("Index is not in range");
     }
@@ -130,13 +130,13 @@ public class MyLinkedList{
       size++;
     }
   }
-  public Integer remove(int i){
+  public Object remove(int i){
     if (i >= size || i < 0){
       throw new IndexOutOfBoundsException("Index is not in range");
   }
     Node prev;
     Node next;
-    Integer temp = get(i);
+    Object temp = get(i);
     Node work = getNth(i);
     if (i == 0){
       next = work.next();
@@ -159,7 +159,7 @@ public class MyLinkedList{
     // size--;
     return temp;
 }
-  public boolean remove(Integer integer){
+  public boolean remove(Object integer){
     if (contains(integer) == false){
       return false;
     }
@@ -178,6 +178,9 @@ public class MyLinkedList{
       this.end = other.end;
       other.clear();
     }
+  }
+  public Object removeFront(Object e){
+    return remove(indexOf(e));
   }
   public String toString(){
     if (size ==0){
