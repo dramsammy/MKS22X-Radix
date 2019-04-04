@@ -19,6 +19,18 @@ public class Radix{
       // adding it to bucket
       set.add(data[i]);
     }
+    for (int i = 0; i < k; i++) {
+     for (int j = 0; j < data.length; j++) {
+       //getting the placevalue
+       int digit = Math.abs(getDigit(data[j], i));
+       if (data[j] > 0)
+       // using buckets in correct order
+         buckets[digit+10].add(data[j]);
+       else {
+         // added for negatives
+         buckets[9-digit].add(data[j]);
+     }
+   }
 
 
   //function to parse through placevalue for the buckets
