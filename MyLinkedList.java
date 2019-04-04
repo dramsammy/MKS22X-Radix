@@ -1,4 +1,4 @@
-public class MyLinkedList{
+public class MyLinkedList<E>{
   private class Node{
     private int data;
     private Node next,prev;
@@ -61,6 +61,9 @@ public class MyLinkedList{
     end = null;
     size = 0;
 }
+public int size(){
+  return size;
+}
   public void extend(MyLinkedList other){
     if (this.size == 0){
       this.size = other.size;
@@ -68,20 +71,30 @@ public class MyLinkedList{
       this.end = other.end;
       other.clear();
     }
-    else{
+    else if (other.size() > 0){
       this.size = this.size + other.size;
       this.end.setNext(other.start);
+      other.start.setPrev(end);
       this.end = other.end;
       other.clear();
     }
 }
   public Integer removeFront(){
+    if (size == 1){
+      Integer value = start.getData();
+      start = null;
+      end = null;
+      size = 0;
+      return value;
+    }
     Integer returnNumber = start.next().getData();
+    Node temp = start;
     Node next;
     next = start.next();
-    next.setPrev(null);
     start = next;
+    next.setPrev(null);
+    temp.setNext(null);
     size--;
-    return returnNumber;
+    return temp.getData();
   }
 }
