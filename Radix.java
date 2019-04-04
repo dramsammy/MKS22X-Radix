@@ -4,14 +4,25 @@ public class Radix{
     MyLinkedList<Integer>[] buckets = new MyLinkedList[20];
     MyLinkedList set = new MyLinkedList();
     for (int i = 0; i < 20; i++){
-      buckets[i] = new MyLinkedList[0];
+      if (buckets[i] == null){
+        buckets[i] = new MyLinkedList[0];
     }
-    for (int i = 0; i < data.length; i++){
-      if (data[i] > largest){
-        largest = data[i];
+  }
+    int num = 0;
+    for(int i = 0; i < data.length; i++){
+
+      if(ans > num){
+        num = ans;
       }
     }
-    Integer.toString(largest).subString(0,1).add(largest);
-    }
-
   }
+  //function to parse through placevalue for the buckets
+  private static int getDigit(int data, int placeValue) {
+		int pos = data;
+    pos = pos / (int) Math.pow(10, placeValue) % 10;
+		if (data < 0) {
+			return pos = pos * -1;
+		}
+		return pos;
+  }
+}
