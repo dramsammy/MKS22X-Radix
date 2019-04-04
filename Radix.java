@@ -9,13 +9,18 @@ public class Radix{
     }
   }
     int num = 0;
-    for(int i = 0; i < data.length; i++){
-
-      if(ans > num){
-        num = ans;
+    // parsing through to figure out if positive or negative value goes in the bucket
+    for (int i = 0; i < data.length; i++){
+      if (Math.abs(data[i]) > Math.pow(10, k)) {
+        // checking length and comparing it to placevalues
+        String holder = "" + data[i];
+        k = holder.length();
       }
+      // adding it to bucket
+      set.add(data[i]);
     }
-  }
+
+
   //function to parse through placevalue for the buckets
   private static int getDigit(int data, int placeValue) {
 		int pos = data;
