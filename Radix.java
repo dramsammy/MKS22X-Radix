@@ -20,7 +20,7 @@ public class Radix{
       set.add(data[i]);
     }
     MyLinkedList temp = new MyLinkedList();
-    for (int i = 0; i < k; i++) {
+    for (int i = 0; i < d; i++) {
      for (int a = 0; a < data.length; a++) {
        //getting the placevalue
        int digit = Math.abs(getDigit(data[a], i));
