@@ -1,10 +1,10 @@
 public class Radix{
   public static void radixsort(int[]data){
-    int largest = 0;
+    int mod = 10;
     MyLinkedList<Integer>[] buckets = new MyLinkedList[20];
+    MyLinkedList set = new MyLinkedList();
     for (int i = 0; i < 20; i++){
-      String x = (Integer.toString(i));
-      MyLinkedList<Integer>[] x = new MyLinkedList[0];
+      buckets[i] = new MyLinkedList[0];
     }
     for (int i = 0; i < data.length; i++){
       if (data[i] > largest){
