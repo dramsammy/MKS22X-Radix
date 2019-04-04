@@ -8,13 +8,13 @@ public class Radix{
         buckets[i] = new MyLinkedList<Integer>();
     }
   }
-    int k = 0;
+    int d = 0;
     // parsing through to figure out if positive or negative value goes in the bucket
     for (int i = 0; i < data.length; i++){
-      if (Math.abs(data[i]) > Math.pow(10, k)) {
+      if (Math.abs(data[i]) > Math.pow(10, d)) {
         // checking length and comparing it to placevalues
         String holder = "" + data[i];
-        k = holder.length();
+        d = holder.length();
       }
       // adding it to bucket
       set.add(data[i]);
@@ -38,9 +38,9 @@ public class Radix{
      if (buckets[x].size() > 0)
        temp.extend(buckets[x]);
      }
-   for (int y = 0; y < data.length; y++) {
+   for (int b = 0; b < data.length; b++) {
      // sorting the data in buckets
-     data[y] = (int)temp.removeFront();
+     data[b] = (int)temp.removeFront();
    }
  }
 }
